@@ -1566,7 +1566,7 @@ func simpleIndexKey(realKey bson.D) (key []string) {
 	return
 }
 
-// ResetIndexCache() clears the cache of previously ensured indexes.
+// ResetIndexCache clears the cache of previously ensured indexes.
 // Following requests to EnsureIndex will contact the server.
 func (s *Session) ResetIndexCache() {
 	s.cluster().ResetIndexCache()
@@ -2735,7 +2735,7 @@ func (c *Collection) Create(info *CollectionInfo) error {
 // It's possible to change this setting on a per-session basis as well, using
 // the Batch method of Session.
 
-// The default batch size is defined by the database itself.  As of this
+// Batch; The default batch size is defined by the database itself.  As of this
 // writing, MongoDB will use an initial size of min(100 docs, 4MB) on the
 // first batch, and 4MB on remaining ones.
 func (q *Query) Batch(n int) *Query {
@@ -3827,13 +3827,13 @@ func (q *Query) All(result interface{}) error {
 	return q.Iter().All(result)
 }
 
-// The For method is obsolete and will be removed in a future release.
+// For; method is obsolete and will be removed in a future release.
 // See Iter as an elegant replacement.
 func (q *Query) For(result interface{}, f func() error) error {
 	return q.Iter().For(result, f)
 }
 
-// The For method is obsolete and will be removed in a future release.
+// For; method is obsolete and will be removed in a future release.
 // See Iter as an elegant replacement.
 func (iter *Iter) For(result interface{}, f func() error) (err error) {
 	valid := false
@@ -4205,7 +4205,7 @@ func (q *Query) MapReduce(job *MapReduce, result interface{}) (info *MapReduceIn
 	return info, nil
 }
 
-// The "out" option in the MapReduce command must be ordered. This was
+// fixMROut; The "out" option in the MapReduce command must be ordered. This was
 // found after the implementation was accepting maps for a long time,
 // so rather than breaking the API, we'll fix the order if necessary.
 // Details about the order requirement may be seen in MongoDB's code:

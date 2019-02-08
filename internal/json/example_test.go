@@ -53,7 +53,7 @@ func ExampleUnmarshal() {
 	// [{Name:Platypus Order:Monotremata} {Name:Quoll Order:Dasyuromorphia}]
 }
 
-// This example uses a Decoder to decode a stream of distinct JSON values.
+// ExampleDecoder uses a Decoder to decode a stream of distinct JSON values.
 func ExampleDecoder() {
 	const jsonStream = `
 		{"Name": "Ed", "Text": "Knock knock."}
@@ -83,7 +83,7 @@ func ExampleDecoder() {
 	// Ed: Go fmt yourself!
 }
 
-// This example uses a Decoder to decode a stream of distinct JSON values.
+// ExampleDecoder_Token uses a Decoder to decode a stream of distinct JSON values.
 func ExampleDecoder_Token() {
 	const jsonStream = `
 		{"Message": "Hello", "Array": [1, 2, 3], "Null": null, "Number": 1.234}
@@ -120,7 +120,7 @@ func ExampleDecoder_Token() {
 	// json.Delim: }
 }
 
-// This example uses a Decoder to decode a streaming array of JSON objects.
+// ExampleDecoder_Decode_stream uses a Decoder to decode a streaming array of JSON objects.
 func ExampleDecoder_Decode_stream() {
 	const jsonStream = `
 		[
@@ -174,7 +174,7 @@ func ExampleDecoder_Decode_stream() {
 
 }
 
-// This example uses RawMessage to delay parsing part of a JSON message.
+// ExampleRawMessage uses RawMessage to delay parsing part of a JSON message.
 func ExampleRawMessage() {
 	type Color struct {
 		Space string

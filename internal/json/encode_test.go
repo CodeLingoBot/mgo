@@ -290,7 +290,7 @@ type BugX struct {
 	BugB
 }
 
-// Issue 5245.
+// TestEmbeddedBug checks a case when Issue 5245.
 func TestEmbeddedBug(t *testing.T) {
 	v := BugB{
 		BugA{"A"},
@@ -330,7 +330,7 @@ type BugY struct {
 	BugD
 }
 
-// Test that a field with a tag dominates untagged fields.
+// TestTaggedFieldDominates tests that a field with a tag dominates untagged fields.
 func TestTaggedFieldDominates(t *testing.T) {
 	v := BugY{
 		BugA{"BugA"},
@@ -464,7 +464,7 @@ func TestHTMLEscape(t *testing.T) {
 	}
 }
 
-// golang.org/issue/8582
+// TestEncodePointerString checks a case when golang.org/issue/8582
 func TestEncodePointerString(t *testing.T) {
 	type stringPointer struct {
 		N *int64 `json:"n,string"`
@@ -564,7 +564,7 @@ func tenc(format string, a ...interface{}) ([]byte, error) {
 	return buf.Bytes(), nil
 }
 
-// Issue 13783
+// TestEncodeBytekind checks a case when Issue 13783
 func TestEncodeBytekind(t *testing.T) {
 	testdata := []struct {
 		data interface{}

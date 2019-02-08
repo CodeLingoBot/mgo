@@ -411,7 +411,7 @@ func (file *GridFile) ContentType() string {
 	return file.doc.ContentType
 }
 
-// ContentType changes the optional file content type.  An empty string may be
+// SetContentType changes the optional file content type.  An empty string may be
 // used to unset it.
 //
 // It is a runtime error to call this function when the file is not open

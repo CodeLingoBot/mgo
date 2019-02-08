@@ -1162,7 +1162,7 @@ func (kerberosSuite *KerberosSuite) TestAuthKerberosServiceHost(c *C) {
 	c.Assert(n, Equals, 1)
 }
 
-// No kinit on SSPI-style Kerberos, so we need to provide a password. In order
+// getWindowsKerberosPassword; No kinit on SSPI-style Kerberos, so we need to provide a password. In order
 // to avoid inlining password, require it to be set as an environment variable,
 // for instance: `SET MGO_KERBEROS_PASSWORD=this_isnt_the_password`
 func getWindowsKerberosPassword() string {

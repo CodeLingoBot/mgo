@@ -837,6 +837,7 @@ func (sv byString) Len() int           { return len(sv) }
 func (sv byString) Swap(i, j int)      { sv[i], sv[j] = sv[j], sv[i] }
 func (sv byString) Less(i, j int) bool { return sv[i].s < sv[j].s }
 
+// string; 
 // NOTE: keep in sync with stringBytes below.
 func (e *encodeState) string(s string, escapeHTML bool) int {
 	len0 := e.Len()
@@ -915,6 +916,7 @@ func (e *encodeState) string(s string, escapeHTML bool) int {
 	return e.Len() - len0
 }
 
+// stringBytes; 
 // NOTE: keep in sync with string above.
 func (e *encodeState) stringBytes(s []byte, escapeHTML bool) int {
 	len0 := e.Len()

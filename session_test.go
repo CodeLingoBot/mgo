@@ -1853,7 +1853,7 @@ func (s *S) TestFindIterSortWithBatch(c *C) {
 	c.Assert(stats.SocketsInUse, Equals, 0)
 }
 
-// Test tailable cursors in a situation where Next has to sleep to
+// TestFindTailTimeoutWithSleep tests tailable cursors in a situation where Next has to sleep to
 // respect the timeout requested on Tail.
 func (s *S) TestFindTailTimeoutWithSleep(c *C) {
 	if *fast {
@@ -1951,7 +1951,7 @@ func (s *S) TestFindTailTimeoutWithSleep(c *C) {
 	c.Assert(result.N, Equals, 48)
 }
 
-// Test tailable cursors in a situation where Next never gets to sleep once
+// TestFindTailTimeoutNoSleep tests tailable cursors in a situation where Next never gets to sleep once
 // to respect the timeout requested on Tail.
 func (s *S) TestFindTailTimeoutNoSleep(c *C) {
 	session, err := mgo.Dial("localhost:40001")
@@ -2032,7 +2032,7 @@ func (s *S) TestFindTailTimeoutNoSleep(c *C) {
 	c.Assert(result.N, Equals, 48)
 }
 
-// Test tailable cursors in a situation where Next never gets to sleep once
+// TestFindTailNoTimeout tests tailable cursors in a situation where Next never gets to sleep once
 // to respect the timeout requested on Tail.
 func (s *S) TestFindTailNoTimeout(c *C) {
 	if *fast {

@@ -924,7 +924,7 @@ func (s *S) TestPreserveSocketCountOnSync(c *C) {
 	c.Assert(stats.SocketRefs, Equals, 1)
 }
 
-// Connect to the master of a deployment with a single server,
+// TestTopologySyncWithSingleMaster checks a case when Connect to the master of a deployment with a single server,
 // run an insert, and then ensure the insert worked and that a
 // single connection was established.
 func (s *S) TestTopologySyncWithSingleMaster(c *C) {

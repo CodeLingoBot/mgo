@@ -53,7 +53,7 @@ var (
 // the application starts. Having raceDetector as a constant, the compiler
 // should elide the locks altogether in actual use.
 
-// Specify the *log.Logger object where log messages should be sent to.
+// SetLogger; Specify the *log.Logger object where log messages should be sent to.
 func SetLogger(logger log_Logger) {
 	if raceDetector {
 		globalMutex.Lock()
@@ -62,7 +62,7 @@ func SetLogger(logger log_Logger) {
 	globalLogger = logger
 }
 
-// Enable the delivery of debug messages to the logger.  Only meaningful
+// SetDebug; Enable the delivery of debug messages to the logger.  Only meaningful
 // if a logger is also set.
 func SetDebug(debug bool) {
 	if raceDetector {

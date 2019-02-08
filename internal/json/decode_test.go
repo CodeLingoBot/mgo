@@ -72,7 +72,7 @@ type unmarshalerText struct {
 	A, B string
 }
 
-// needed for re-marshaling tests
+// MarshalText; needed for re-marshaling tests
 func (u unmarshalerText) MarshalText() ([]byte, error) {
 	return []byte(u.A + ":" + u.B), nil
 }
@@ -646,7 +646,7 @@ var numberTests = []struct {
 	{in: "1e1000", intErr: "strconv.ParseInt: parsing \"1e1000\": invalid syntax", floatErr: "strconv.ParseFloat: parsing \"1e1000\": value out of range"},
 }
 
-// Independent of Decode, basic coverage of the accessors in Number
+// TestNumberAccessors checks a case when Independent of Decode, basic coverage of the accessors in Number
 func TestNumberAccessors(t *testing.T) {
 	for _, tt := range numberTests {
 		n := Number(tt.in)
@@ -739,7 +739,7 @@ var wrongStringTests = []wrongStringTest{
 	{`{"result":123}`, `json: invalid use of ,string struct tag, trying to unmarshal unquoted value into string`},
 }
 
-// If people misuse the ,string modifier, the error message should be
+// TestErrorMessageFromMisusedString checks a case when If people misuse the ,string modifier, the error message should be
 // helpful, telling the user that they're doing it wrong.
 func TestErrorMessageFromMisusedString(t *testing.T) {
 	for n, tt := range wrongStringTests {
@@ -1100,7 +1100,7 @@ func TestRefUnmarshal(t *testing.T) {
 	}
 }
 
-// Test that the empty string doesn't panic decoding when ,string is specified
+// TestEmptyString tests that the empty string doesn't panic decoding when ,string is specified
 // Issue 3450
 func TestEmptyString(t *testing.T) {
 	type T2 struct {
@@ -1119,7 +1119,7 @@ func TestEmptyString(t *testing.T) {
 	}
 }
 
-// Test that a null for ,string is not replaced with the previous quoted string (issue 7046).
+// TestNullString tests that a null for ,string is not replaced with the previous quoted string (issue 7046).
 // It should also not be an error (issue 2540, issue 8587).
 func TestNullString(t *testing.T) {
 	type T struct {
@@ -1187,7 +1187,7 @@ func TestInterfaceSet(t *testing.T) {
 	}
 }
 
-// JSON null values should be ignored for primitives and string values instead of resulting in an error.
+// TestUnmarshalNulls checks a case when JSON null values should be ignored for primitives and string values instead of resulting in an error.
 // Issue 2540
 func TestUnmarshalNulls(t *testing.T) {
 	jsonData := []byte(`{
@@ -1257,7 +1257,7 @@ func TestStringKind(t *testing.T) {
 	}
 }
 
-// Custom types with []byte as underlying type could not be marshalled
+// TestByteKind checks a case when Custom types with []byte as underlying type could not be marshalled
 // and then unmarshalled.
 // Issue 8962.
 func TestByteKind(t *testing.T) {
@@ -1279,7 +1279,7 @@ func TestByteKind(t *testing.T) {
 	}
 }
 
-// The fix for issue 8962 introduced a regression.
+// TestSliceOfCustomByte checks a case when The fix for issue 8962 introduced a regression.
 // Issue 12921.
 func TestSliceOfCustomByte(t *testing.T) {
 	type Uint8 uint8
@@ -1392,7 +1392,7 @@ func TestUnmarshalJSONLiteralError(t *testing.T) {
 	}
 }
 
-// Test that extra object elements in an array do not result in a
+// TestSkipArrayObjects checks a case when that extra object elements in an array do not result in a
 // "data changing underfoot" error.
 // Issue 3717
 func TestSkipArrayObjects(t *testing.T) {
@@ -1405,7 +1405,7 @@ func TestSkipArrayObjects(t *testing.T) {
 	}
 }
 
-// Test semantics of pre-filled struct fields and pre-filled map fields.
+// TestPrefilled tests semantics of pre-filled struct fields and pre-filled map fields.
 // Issue 4900.
 func TestPrefilled(t *testing.T) {
 	ptrToMap := func(m map[string]interface{}) *map[string]interface{} { return &m }
@@ -1487,7 +1487,7 @@ func TestInvalidUnmarshalText(t *testing.T) {
 	}
 }
 
-// Test that string option is ignored for invalid types.
+// TestInvalidStringOption tests that string option is ignored for invalid types.
 // Issue 9812.
 func TestInvalidStringOption(t *testing.T) {
 	num := 0

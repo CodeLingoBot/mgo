@@ -280,7 +280,7 @@ const (
 	tokenObjectComma
 )
 
-// advance tokenstate from a separator state to a value state
+// tokenPrepareForDecode; advance tokenstate from a separator state to a value state
 func (dec *Decoder) tokenPrepareForDecode() error {
 	// Note: Not calling peek before switch, to avoid
 	// putting peek into the standard Decode path.

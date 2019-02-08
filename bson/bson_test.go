@@ -52,7 +52,7 @@ type S struct{}
 
 var _ = Suite(&S{})
 
-// Wrap up the document elements contained in data, prepending the int32
+// wrapInDoc; up the document elements contained in data, prepending the int32
 // length of the data, and appending the '\x00' value closing the document.
 func wrapInDoc(data string) string {
 	result := make([]byte, len(data)+5)

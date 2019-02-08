@@ -541,7 +541,7 @@ func fill(r net.Conn, b []byte) error {
 	return err
 }
 
-// Estimated minimum cost per socket: 1 goroutine + memory for the largest
+// readLoop; Estimated minimum cost per socket: 1 goroutine + memory for the largest
 // document ever seen.
 func (socket *mongoSocket) readLoop() {
 	p := make([]byte, 36) // 16 from header + 20 from OP_REPLY fixed fields

@@ -434,7 +434,7 @@ func (d *decoder) dropElem(kind byte) {
 	d.readElemTo(blackHole, kind)
 }
 
-// Attempt to decode an element from the document and put it into out.
+// readElemTo; Attempt to decode an element from the document and put it into out.
 // If the types are not compatible, the returned ok value will be
 // false and out will be unchanged.
 func (d *decoder) readElemTo(out reflect.Value, kind byte) (good bool) {
